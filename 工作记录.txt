@@ -287,10 +287,11 @@ LED是怎么打开的
 Press1 pluseCount : 0
 
 
+NVM2光机		PROJ_ON的GPIO脚位为GPIO_2
+NPR-F NPM-F		PROJ_ON的GPIO脚位为GPIO_7
+修改lible.c487行的值即可
 
-
-
-
+lible.c 198 199 200行 Slave装置位置
 
 
 
