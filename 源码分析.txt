@@ -1,0 +1,12 @@
+源码分析
+
+PrintThread()
+
+
+当服务器接收到“start”指令之后，
+向客户端发送“start！”，
+然后判断isPrintingFlag是否为"False"（当isPrintingFlag是“true”时，表示正在打印），
+如果isPrintingFlag是“False”,则执行PrintThread(),
+
+PrintThread():
+先将isPrintFlag赋值为“Ture”,表示正在打印，

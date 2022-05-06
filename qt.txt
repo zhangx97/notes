@@ -1,0 +1,58 @@
+qmlRegisterType 是一个可以将C++实现的类在QML中调用的，连接C++和QML的一个工具，非常重要的函数！！！
+
+
+基本类型
+
+===========================================================================================================
+Qt多个按钮响应一个槽函数：
+	在类中添加函数：
+		public slots：
+			void OnButton();
+	在构造函数中添加按钮与函数的连接
+		connect(ui->pushButton1,SIGNAL(clicked()),this,SLOT(OnButton()));
+		connect(ui->pushButton2,SIGNAL(clicked()),this,SLOT(OnButton()));
+	响应函数代码：
+		void UI_AlarmDlg::OnAlarmStation()
+		{
+			QPushButton *btn=qobject_cast<QPushButton*>(sender()); //得到当前操作的按钮
+			if(btn==ui->pushButton1)//注：只有控件有名称时才能使用拜托你btn->objectname==ui->pushbuttonname
+			{
+				//添加响应信息
+			}
+			else if(btn==ui->pushButton1)
+			{
+				//添加响应信息
+			}
+		}
+===========================================================================================================
+QMessageBox类
+提供一个模态对话框，（什么叫模态对话框）
+用于通知用户或询问客户一个问题并接收答案。
+
+
+
+
+QString::compare返回int类型值：
+ 
+int x = QString::compare("aUtO", "AuTo", Qt::CaseInsensitive);  // x == 0
+int y = QString::compare("auto", "Car", Qt::CaseSensitive);     // y > 0
+int z = QString::compare("auto", "Car", Qt::CaseInsensitive);   // z < 0
+ 
+第一和第二个参数为进行比较的两个字符串，第三个参数含义为是否大小写敏感。
+其中Qt::CaseInsensitive代表大小写不敏感，Qt::CaseSensitive表示大小写敏感
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

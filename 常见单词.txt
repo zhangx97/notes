@@ -1,0 +1,40 @@
+recent		最近的
+disable		禁用
+invoke		调用
+hierarchy	层次
+scene		场景
+inspector	检察员
+
+position	位置
+rotation	旋转
+scale		缩放
+
+material	材料
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

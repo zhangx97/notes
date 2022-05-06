@@ -1,0 +1,7 @@
+Arduino
+
+Setup()和Loop()
+setup函数只能在Arduino板的每次上电或复位后运行一次。
+
+
+millis() : 此函数用于返回Arduino板开始运行当前程序时的毫秒数。这个数字在大约50天后溢出，即回到零。

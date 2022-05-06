@@ -1,0 +1,93 @@
+int main()
+{
+	CY_HANDLE handle;
+	Unsigned int device;
+	CY_RETURN_STATUS rStatus;
+	CY_DEVICE_INFO deviceInfo;
+	rStatus = CyLibraryInit (); //Initates Cypress Library
+	if (rStatus != CY_SUCCESS)
+	{
+		printf ("CY:Error in Doing library init Error NO:<%d> \n", rStatus);
+		return rStatus;
+	}
+	device = findCypressDevice(); //This function is used to detect Cypress device connected to USB bus.
+	if (device < 0)
+	{
+		return 0;
+	}
+	rStatus = CyGetDeviceInfo(device, &deviceInfo); //This API is used to get information(VID,PID) about detected Cypress device.
+	if (rStatus != CY_SUCCESS)
+	{
+		return 0;
+	}
+	rStatus = CyOpen(device, 0, &handle); //This API is used to open Cypress device (Gets handle of device)
+	if (rStatus != CY_SUCCESS)
+	{
+		return 0;
+	}
+	rStatus=CySetGpioValue(handle,1,0); //This API is used to set value of GPIO1 to 0.
+	if (rStatus == CY_SUCCESS)
+	{
+		printf("Value changed");
+	}else
+	{
+		printf("Not changed");
+	}
+	rStatus=CyGetGpioValue(handle,1,&value); //This API is used to retrieve value of GPIO1.
+	if (rStatus == CY_SUCCESS)
+	{
+		printf("Value retrieved %d",value);
+	}else
+	{
+		printf("Not changed");
+	}
+	rStatus= CyClose(handle); //This API is used to close the Cypress device.
+	if (rStatus == CY_SUCCESS)
+	{
+		printf("Device closed");
+	}else
+	{
+		printf("Not closed");
+	}
+	CyLibraryExit (); //This API is used to exit library.
+}
+	
+/* This function is used to get number of connected Cypress Devices */
+unsigned int getNumberOfDevices(void) {
+	unsigned int num = 255;
+	CyGetListofDevices(&num);
+	return num;
+}
+
+/* This function is used to find Cypress device */
+int findCypressDevice()
+{
+	unsigned int num_devices = getNumberOfDevices();
+	for (unsigned int curdev = 0; i < num_devices; curdev++)
+	{
+		if (isCypressDevice(curdev))
+			return curdev;
+	}
+	return -1;
+}
+
+bool isCypressDevice(int deviceNum) 
+{     
+	CY_HANDLE handle;     
+	unsigned char signature[6];     
+	CY_RETURN_STATUS rStatus;     
+	rStatus = CyOpen (deviceNum, 0, &handle);     
+	if (rStatus != CY_SUCCESS)     
+	{         
+		return false;     
+	}      
+	rStatus = CyGetSignature (handle, signature);     
+	if (rStatus == CY_SUCCESS)     
+	{         
+		CyClose (handle);         
+		return 1;     
+	}else    
+	{
+		return 0;     
+	}
+}

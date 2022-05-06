@@ -1,0 +1,20 @@
+
+
+# -*- coding:utf8 -*- 如要在该文件中使用中午，则需要此句,须放在文档的第一句或第二句
+#!/usr/bin/python
+
+
+
+
+
+
+
+
+
+ResinCuringTime		树脂固化时间
+ModelCount			模型（层）数
+LayerThickness		层厚
+BottomCount			底部（层）数
+SpecialExposeLayer	特殊曝光层
+Material			材质
+logger				日志记录器

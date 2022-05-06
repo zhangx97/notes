@@ -1,0 +1,119 @@
+在 C# 语言中 RadioButton 是单选按钮控件，多个 RadioButton 控件可以为一组，这一组内的 RadioButton 控件只能有一个被选中。
+
+CyGetDeviceInfoVidPid
+
+CyOpen
+
+CyClose
+
+CySetGpioValue
+
+CyGetGpioValue
+
+CyI2cWrite
+
+CyI2cRead
+
+CySpiReadWrite
+
+只用到了四个针脚
+GPIO_0		RESETZ
+GPIO_1		I2C_BUSY
+GPIO_14		LED_ON_OFF
+GPIO_15		ASIC_READY
+
+private void
+
+
+private
+public
+protected
+
+
+private 私有的
+作为私有成员，只能通过成员方法来访问
+
+ProjectorEnable
+173	bool ProjectorEnable = true:
+188	ret = mDdp442x.SetProjectorOnOf(ProjectorEnable);
+291 bool ProjectorEnable = false
+
+
+isCypressDevice();
+
+
+C#中创建的WPF应用程序的入口函数public static void Main()在App.g.i.cs中
+
+
+
+
+
+
+const int cWriteSize = 3;                                                
+quint8 *sendBuf = new quint8[cWriteSize];                                
+sendBuf[0] = 0xD1;                                                       
+sendBuf[1] = ((level >> 8) & 0xFF);                                      
+sendBuf[2] = (level & 0xFF);                                             
+I2CWrite(deviceNum, I2C_IF_NUM, cSlaveAddress7bit, cWriteSize, sendBuf); 
+
+
+
+System.Environment.CurrentDirectory		获取当前工作目录
+该方法存在问题：在程序B中使用该方法，如何在程序A中调用程序B，则返回程序A的路径！需注意该问题！
+为避免以上问题可使用System.AppDomain.CurrentDomain.BaseDirectory
+					或者Application.StartupPath（仅适用于WinForm窗体）。
+C#: 获取当前路径不要用Environment.CurrentDirectory详情见：https://www.cnblogs.com/danvy/p/10228840.html
+
+
+C#中new一个对象以后，不需要手动释放，因为.net里面的CLR(common language runtime)会自动清理内存管理。
+
+
+
+
+Dictionary<string, string>是一个泛型，本身有集合的功能有时候可以把它看成数组
+
+
+
+transform vector
+
+
+
+
+
+
+GetComponent
+
+GameObject template = (GameObject)Resources.Load("NesStart/Upload");
+string path = System.Environment.CurrentDirrectory
+image = machineExist.GetComponent
+
+
+
+
+单例模式	instance
+只有一个实例
+
+静态
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

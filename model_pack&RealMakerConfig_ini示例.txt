@@ -1,0 +1,46 @@
+pi@raspberrypi:~/python_project $ cat RealMakerConfig.ini
+ApplyMask         True  # 干嘛用的
+SerialTimeOut     70
+BottomCuringTimes 50,50,20,20,20
+BaudRate 9600
+CrackDistance     5
+AscendSpeed       250
+DescendSpeed      600
+TcpHostIp 192.168.0.188
+TcpHostPort           2000
+TargetLight 1537
+LightList {'GIN01-RZYY':914,'D200G':40,'M200-A-LSY':756,'WD010-ZJLX':2170,'WD010-GDLX':1381,'M200-Z-DWQ':1537,'W010D':1381,'black':10,'SG4002-ZZDB':2170,'M200-Z-ZZMX':1537,'M200-Z-XFMX':1537,'M126H':1537}
+Heater 0
+SleepTime 100
+SVN RMK2021090204HOP
+LockState False  # 干嘛用的
+ModelType 5  # 干嘛用的
+Debug 1
+DevSerial /dev/ttyACM0
+Locker False  # 干嘛用的
+LightSensorType 1
+offset 10
+PluseCount 0
+PluseFunction 0   
+
+pi@raspberrypi:~/python_project $ cat images/model.pack
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationConfig FileVersion="1">
+  <count>426</count>
+  <width>1920</width>
+  <height>1080</height>
+  <thick>0.05</thick>
+  <max_z>21.50328</max_z>
+  <bottom_count>5</bottom_count>
+  <bottom_expose_time>5,5,3,3,3</bottom_expose_time>
+  <layer_expose_time>0.4</layer_expose_time>
+  <model_name>XFMX220316001S5.slicepack</model_name>
+  <print_time>2022-03-16 15:21:22</print_time>
+  <material>M200-Z-XFMX</material>
+  <volume>37.532</volume>
+  <supportpara>0.40,0.70,2.00</supportpara>
+  <special_expose_time>null</special_expose_time>
+</ApplicationConfig>
+
+
+<bottom_curing_time_multiple>1</bottom_curing_time_multiple>

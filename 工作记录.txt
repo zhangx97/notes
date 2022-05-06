@@ -1,0 +1,300 @@
+D:\ARM\RealmakerFirmware\树莓派\基于python2.7\四代机\源码\realmaker.py  1566
+D:\ARM\RealmakerFirmware\树莓派\基于python2.7\通用脚本固件源码
+D:\ARM\CyUSBSerial_SDK_Linux\linux\library\lible.c
+
+新光机的应用C:\Users\13166\Desktop\NQM_Controller v2.4.5a_BIN
+
+
+VPN工具：C:\Clash.for.Windows-0.15.1-ia32-win\Clash for Windows.exe
+
+C:\Users\13166\Desktop\rpi v5\生成模型分层动画
+
+\\realmaker-share\software\Firmware\技术文档_zhangting\设备固件代码技术文档\树莓派\四代机\各升级版本
+排版软件源码C:\temp\develop
+网站源码C:\server
+
+调试助手源码：D:\ARM\RealmakerFirmware\调试工具\调试助手源码\源码\RaspberryTool
+
+/home/pi/.rmkcfg/rmk_spshell.py
+
+192.168.0.51  REALMAKER-HALOP-ALPHA
+/home/pi/python_project/RealMakerConfig.ini  配置文件
+/home/pi/python_project/info.log  日志
+
+
+Raspberry Pi 4 Model B
+
+
+
+enable_uart=1 #使能串口
+disable_splash=1 #取消彩虹屏
+max_usb_current=1 #USB最大输出电流1A
+start_x=1 
+gpu_mem=128 
+
+#dtoverlay=w1-gpio 
+#dtoverlay=gpio-ir,gpio_pin=23 
+#dtoverlay=gpio-ir-tx,gpio_pin=22 
+#dtoverlay=w1-gpio
+# Uncomment this to enable the lirc-rpi module dtoverlay=lirc-rpi
+#dtoverlay=gpio-ir,gpio_pin=20 
+audio_pwm_mode=2
+
+新建ssh文件夹
+
+
+
+/etc/dhcpcd.conf
+
+
+export http_proxy="http://192.168.0.179:7890"
+export https_proxy="http://192.168.0.179:7890"
+
+
+
+SVN RMK2021090208HOP
+
+
+回归顶点M18
+回归原点G28
+光机LED闪烁M90
+
+
+adjust G1 Z1 F250
+
+"G1 Z1 F250"
+
+
+后群
+up 顺时针
+down 逆时针
+home——>  down	
+——>home  up		
+
+调试工具源码里的cypress.cs与树莓派中的头文件CyUSBSerial.h作用类似
+C:\Users\13166\Desktop\扬明4k光机\20200429_NQM_Controller_2.4.5a_Source_Code\20200429_NQM_Controller_2.4.5a_Source_Code\Cypress\cypress.cs
+D:\ARM\CyUSBSerial_SDK_Linux\common\header\CyUSBSerial.h
+
+
+Desktop_Qt_5_15_2_MinGW_32_bit
+
+
+压力传感器检测到压力会向arduino15脚持续输出高电平，新版本之后输出一次
+
+D:\ARM\CyUSBSerial_SDK_Linux\linux\library\lible.c是自己写的，其它是官方的
+
+
+
+当一个头文件中有
+#ifdef __cplusplus
+    #define CppCALLCONVEN extern "C"
+#else
+    #define CppCALLCONVEN 
+#endif
+时，
+当该文件被引入C++程序中时，会选择带有extern "C"的执行，
+当该文件被引入C程序中时，会选择不带extern "C"的执行。
+
+
+\\realmaker-share\software\Firmware\技术文档_zhangting\设备固件代码技术文档\树莓派\四代机\各升级版本
+
+
+
+printerControlMessage == "projection"
+当接收到projection的命令时，
+lightengine = new CyUSBSerialLib(ConfigAndState::lightSensorType);
+lightengine->SetProjectorOnOff(true);
+new一个对象，在构造函数中完成devNum和lightSensorType的赋值；
+然后调用SetProjectorONOff(true)
+再cyAPIInit(devNum,lightSensorType)
+CyUSBSerialController::setProjectorOnOff
+
+
+
+70
+旧光机1980x1024
+新光机2712 x 1528原生模式
+DMD
+
+
+
+
+没设置环境变量会出现以下信息：
+Failed to move cursor on screen HDMI1: -13
+Failed to move cursor on screen HDMI1: -13
+Failed to move cursor on screen HDMI2: -13
+Failed to move cursor on screen HDMI1: -13
+Could not set cursor on screen HDMI1: -13
+Could not set cursor on screen HDMI1: -13
+Could not set cursor on screen HDMI1: -13
+Could not set DRM mode for screen HDMI1 (Permission denied)
+Could not queue DRM page flip on screen HDMI1 (Permission denied)
+
+
+\\realmaker-share\software\Firmware\技术文档_zhangting\设备固件代码技术文档\树莓派
+
+C:\Users\13166\Desktop\UnityBuild\MonoBleedingEdge
+
+
+
+
+windows上的排版软件
+
+Arduino
+
+树莓派上的python
+
+
+
+远程桌面连接 mstsc
+
+
+
+查看数据库
+C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server Tools 18\Microsoft SQL Server Management Studio 18
+
+
+
+四代机五代机行程不一样；四代机50五代机30
+
+
+
+树莓派针脚：
+加热垫：   
+ 红17
+ 黑23
+ 绿38
+探针：       
+ 红1
+ 绿7
+ 黑9
+串口：      
+ 白8
+ 长条纹10
+ x14
+按钮：      
+ 绿11
+ 红16
+ 黑20
+ 黄39
+python用的BCM编码
+qt用的wiringPi编码
+
+
+
+出现recv接收乱码时，\\realmaker-share\software\RealmakerV3.3\RealmakerV3.3.7.rar用该软件
+
+z轴运动：Sprinter.ino:2412
+
+"get pressed"to log:realmaker.py:102
+
+
+arduino 电机升降、灯带、压力传感器
+
+
+
+0001
+0010
+0100
+1000
+0000
+
+
+Z_AXIS 大于等于 4
+
+如何替换
+sudo python -m py_compile realmaker.py
+
+
+
+case 28: //G28 Home all Axis one at a time
+  //Serial.println(normalpluseCount);
+    pressActive = false;
+  move_home(Z_AXIS, MOV_MIN_DIR);
+  Serial.println("OK");
+
+
+case 15:
+    contactFaceRegulateMode = true; //接触面校准模式开启  
+    Serial.println("OK");  
+    break;  
+
+def PluseCalibrate():
+    global DevSer
+    logger.info("receive cmd adjust pluse")
+    cmdToMachine=com_search_open(DevSer.name)
+    if not DevSer is None:
+        logger.info("serial is exist: "+DevSer.name)
+        logger.info("start calibrate pluse")
+        send_a_cmd(cmdToMachine,"G15")
+        #send_a_cmd(cmdToMachine,"PRESS_INIT 1300000000")
+        send_a_cmd(cmdToMachine,"G28")
+        send_a_cmd(cmdToMachine,"M18")
+    close_serial(cmdToMachine)
+
+
+
+在ModelPack.cs 87行之前修改好setting.config
+在BMInitPara.cs 12行之前修改好setting.config
+InitSetting.cs 462行读取setting.config里的值并显示
+
+
+YaGuan_bottomTime
+DWQ_bottomTime
+LSY_bottomTime
+YaMo_bottomTime_SpecialDev
+YaMo_bottomTime
+DaoBan_bottomTime
+ZhiJia_bottomTime
+YaYin_bottomTime
+
+pc 连上 树莓派
+pc会受到Welcome!
+pc再发送bottomTimeMultiple 
+树莓派接收到上述命令后发送bottomTimeMultiple! 1x,1x,1x,1x,1x,1x,1x,1x
+
+
+电源转换器 12进5出到树莓派
+
+
+
+排版软件
+光机亮度
+
+开机 先开主板再开led
+通过控制电流来调整光机亮度，电流和光机亮度呈线性关系
+先输入最小电流值，读取此时的光机亮度，得到
+10次确定合适的电流值
+关机 先关led再关主板
+
+遮罩
+
+图像处理中的掩膜Mask
+
+Proj_On
+
+光机是什么时候开机的
+
+LED是怎么打开的
+
+受到开始打印的命令，
+
+0000 0111
+
+
+
+
+Press1 pluseCount : 0
+
+
+
+
+
+
+
+
+
+
+
+
+
