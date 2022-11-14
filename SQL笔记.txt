@@ -1,0 +1,108 @@
+SQL
+
+SQL是所有关系型数据库的公共语言，
+Microsoft SQL Server和MYSQL都是关系型数据库管理系统。
+
+SQL对关键字大小写不敏感。
+
+单行注释--
+多行注释/* */
+
+SQL语句末端分号的问题：
+	分号是在数据库系统中分隔每条SQL语句的标准方法，
+	某些数据库系统要求在每条SQL语句的末端使用分号，
+	Microsoft SQL Server末端可不用分号，MYSQL要用分号，
+	总结：嵌套在程序里写SQL，不加分号；在查询工具里写SQL，加分号。
+
+SQL的单引号与双引号：
+	标准SQL中，字符串使用单引号。
+	如果字符串本身也包括单引号，则使用两个单引号（注意，不是双引号，字符串中的双引号不需要另外转义）。
+	SQL Server中字符串使用双引号会报错。
+
+查询
+SELECT column_name,column_name
+FROM table_name;
+或
+SELECT * FROM table_name;
+
+where
+
+插入
+INSERT INTO table_name --不指定列名
+VALUES (value1,value2,value3,...);
+或
+INSERT INTO table_name (column1,column2,column3,...) --指定列名
+VALUES (value1,value2,value3,...);
+
+修改
+UPDATE table_name
+SET column1=value1,column2=value2,...
+WHERE some_column=some_value;
+
+删除
+DELETE FROM table_name
+WHERE some_column=some_value;
+
+ORDER BY 关键字 --结果根据关键字排序
+
+添加列
+ALTER TABLE table_name
+ADD column_name datatype
+
+删除列 --某些数据库系统不允许这种删除列的方式
+ALTER TABLE table_name
+DROP COLUMN column_name
+
+修改表中列的数据类型
+SQL Server / MS Access：
+	ALTER TABLE table_name
+	ALTER COLUMN column_name datatype
+My SQL / Oracle：
+	ALTER TABLE table_name
+	MODIFY COLUMN column_name datatype
+
+INNER JOIN 关键字
+
+SQL的数据类型！！！
+
+
+判断表中某列是否有某值，有的话更新修改，没的话插入，例：
+if not exists (select RMKID from VIPnote where RMKID = 'RMK2019042801HOP')
+    insert into VIPnote(RMKID, note) values('RMK2019042801HOP', '测试测试测试test')
+else
+    update VIPnote set note = '测试测试测试test' where RMKID = 'RMK2019042801HOP'
+
+
+查询表1某列与表2某列值相同的行并返回表1符合条件的行，例：
+select t1.name from Customer t1
+inner join shipment t2 on t2.customer = t1.ID 
+where t2.RMKID = 'RMK2019042801HOP' and (t2.deleted is null or t2.deleted != 'Y')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

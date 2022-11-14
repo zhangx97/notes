@@ -11,7 +11,8 @@ scale		缩放
 
 material	材料
 
-
+apply		应用
+static		静止的
 
 
 

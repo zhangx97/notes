@@ -1,0 +1,66 @@
+asp.net
+
+基于页面web form
+	适合小型网站，有现成控件可用
+	C#
+	数据库（最好用SQL Server）
+	
+基于框架mvc
+	大项目
+	前端：HTML/CSS、js（推荐jQuery框架）、ajax
+	后端：mvc、orm框架、依赖注入容器（Spring.net、unity）
+
+C#
+conn = new SqlConnection("Server=rm-bp1280w63ltml17t6o.sqlserver.rds.aliyuncs.com,3433;Database=Realmaker;uid=realmaker;pwd=shxd0825GO");
+conn = new SqlConnection("Server=rm-bp1280w63ltml17t6o.sqlserver.rds.aliyuncs.com,3433;Database=rmkdb;uid=realmaker;pwd=shxd0825GO;max pool size=512");
+conn.open();
+conn.Dispose();
+
+string vipid = Request.QueryString["id"] == null ? "" : Request.QueryString["id"];
+string notetest = Request.QueryString["vipnote"] == null ? "" : Request.QueryString["vipnote"];
+StringBuilder sb = new StringBuilder();
+sb.AppendFormat("if not exists (select RMKID from VIPnote where RMKID = '{0}'){1}", vipid, Environment.NewLine);
+sb.AppendFormat("insert into VIPnote(RMKID, note) values('{0}', '{1}'){2}", vipid, notetest, Environment.NewLine);
+sb.AppendFormat("else{0}", Environment.NewLine);
+sb.AppendFormat("update VIPnote set note = '{0}' where RMKID = '{1}'", notetest, vipid);
+SQL sql = new SQL();
+sql.ExecuteNonQuery(sb.ToString());
+sql.Close();
+
+StringBuilder sb = new StringBuilder();
+sb.AppendFormat("select t1.note{0}", Environment.NewLine);
+sb.AppendFormat("from VIPnote t1{0}", Environment.NewLine);
+sb.AppendFormat("where RMKID = '{0}'", ID);
+SQL sql = new SQL();
+DataTable dt = sql.Execute(sb.ToString());
+note = dt.Rows[0]["note"].ToString();
+sql.Close();
+
+HTML
+<input type="text" style="width:480px" readonly="readonly" name="vipnote" value="<%#Eval("note") %>" />
+<label>备注</label>
+<button class="btn btn-primary" style="float:right" onclick="SaveNote()" id="savenote">保存</button>
+
+
+
+js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

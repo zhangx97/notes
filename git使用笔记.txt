@@ -3,15 +3,18 @@ git config --system --list	查看系统配置信息
 git config --global --list	查看当前用户配置信息
 git config --local --list	查看当前仓库配置
 检查配置信息里user.name和user.emaill是否正确，可通过以下命令修改
-git config -global user.name "zhangx97"
-git config -global user.email "zhangxihb@qq.com"
+git config --global user.name "zhangx97"
+git config --global user.email "zhangxihb@qq.com"
 
 cd进入用户主目录，查看.ssh目录下有没有id_rsa和id_rsa.pub这两个文件，
 id_rsa是私钥，id_rsa.pub是公钥
-若修改了用户邮箱可通过该命令ssh-keygen -t rsa –C “youremail@example.com”生成私钥和公钥
+若修改了用户邮箱可通过该命令ssh-keygen -t rsa –C "zhangxihb@qq.com"生成私钥和公钥
 -t rsa  采用rsa的加密方式
 -C ""   备注
-在github或者gitee上Add SSH Key
+在github或者gitee上Add SSH Key,输入公钥
+
+git add .
+git commit -m "first commit"
 
 可通过以下命令将已有的本地仓库与GitHub仓库关联，并将本地仓库的内容推送到GitHub仓库
 git remote add origin https://github.com/zhangx97/zhangx97.git
@@ -25,7 +28,8 @@ git push -u origin main
 	url = https://gitee.com/zhangxitryhard/realmaker.git
 
 
-
+git token
+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
 
 
 

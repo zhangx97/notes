@@ -87,14 +87,22 @@ list()方法用于将元祖转换为列表
 
 
 
+time.time()
+time.localtime()
+time.localtime(time.time())
+time.struct_time(tm_year=2016, tm_mon=11, tm_mday=27, tm_hour=10, tm_min=26, tm_sec=5, tm_wday=6, tm_yday=332, tm_isdst=0)
+tm_wday 星期[0:6]
+tm_yday 从每年的1月1日开始的天数[0:365],0代表1月1日
+tm_isdst 夏令时标识符，实行夏令时的时候为正，不实行夏令时的时候为0，不了解情况时为负。
 
 
 
 
+continue跳出本次循环
+break跳出整个循环
 
-
-
-
+for 迭代变量 in 字符串|列表|元组|字典|集合：
+    代码块
 
 
 

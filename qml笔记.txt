@@ -1,0 +1,485 @@
+qml笔记
+
+
+button 样式
+import QtQuick.Controls 1.X
+import QtQuick.Controls.Style 1.X
+qml button invalid property name style
+import QtQuick.Controls 版本的问题
+2.X版本取消了style的属性，1.X版本中有style的属性
+
+
+
+
+import QtQuick 2.12
+import QtQuick.Window 2.12
+//import QtQuick.Controls 2.5
+
+Window {
+    width: 1920
+    height: 1080
+    visible: true
+    //color: "#f2f2f7"
+    //title: qsTr("Hello World")
+    //flags: Qt.CustomizeWindowHint             //隐藏最小化、最大化、关闭按钮
+    flags:Qt.FramelessWindowHint                //无边框
+}
+
+
+
+x 、y坐标
+width 、height尺寸
+maximumHeight
+maximumWidth
+minimumHeight
+minimunWidth尺寸的最大最小值
+opacity透明度 0到1
+focus焦点
+Keys.onLeftPressed
+keys.onRightPressed
+
+background: Rectangle {
+	border.color: btn1.focus ? "blue" : "black"
+}
+
+
+onActiveFocusItemChanged: 
+
+objectName:
+
+console.log()
+activeFocusItem
+
+z:		调整控件顺序
+
+Keys.onReturnPressed
+
+
+anchors.left
+anchors.leftMargin
+anchors.right
+anchors.rightMargin
+anchors.top
+anchors.topMargin
+anchors.bottom
+anchors.bottomMargin
+anchors.centerIn: parent								//相对于父对象居中
+anchors.horizontalCenter: parent.horizontalCenter		//相对于父对象的横向居中
+anchors.verticalCenter: parent.verticalCenter			//相对于父对象的垂直居中
+
+rotation:			//旋转
+scale:				//缩放
+
+Rectangle
+
+antialiasing:		抗锯齿，默认是true
+border.width:		
+border.color:
+radius:				//圆角
+
+
+
+state：
+states:
+
+
+动画效果
+PropertyAnimation
+NumberAnimation
+ColorAnimation
+SequentialAnimation
+
+MouseArea
+
+transitions
+Behavior
+
+Component.
+
+
+
+MVC设计模式
+
+获取当前屏幕的矩形
+QScreen* screen = QGuiApplication::primaryScreen();
+QRect rect = screen->virtualGeometry();
+
+QtObject
+
+宏QML_ELEMENT的头文件#include <QtQml>
+
+
+
+
+
+===============================================================================================================================
+在qml中调用C++中的函数：
+	在用qmlRegisterType注册某一类后，在该类的函数前添加Q_INVOKABLE的宏，即可在qml中调用该类的该函数。
+=================================================================================================================================
+//在qml中有信号：
+signal qmlSig(int i, string s)
+
+//想在按钮触发时，将qmlSig信号发送到C++中的MyObject中
+Button {
+	objectName: "mybutton"
+	onClicked: {
+		qmlSig(10, "zhangsan")
+	}
+}
+
+MyObject {
+	id: myobj
+}
+
+//C++ MyObject中的槽函数：
+cppSlot()
+-------------------------------------------------------------------------------------------
+在qml中实现：
+
+第一种方法：
+Connections {
+	//发送信号者
+	target: window
+	function onQmlSig(i, s) {
+		myobj.cppSlot(i, s)
+	}
+}
+
+第二种方法：
+//触发条件，组件加载完成时
+Component.onCompleted: {
+	qmlSig.connect(myobj.cppSlot)
+}
+------------------------------------------------------------------------------------------------
+在C++中实现：
+
+//在engine加载完成后，即在engine.load(url);之后
+//获取并返回load的qml文件中所有的组件列表
+auto list = engine.rootObjects();
+auto window = list.first();
+//auto buttonObj = list.first()->findChild<QObject *>("mybutton");
+//需要应用头文件<QObject>
+QObject::connect(window, SIGNAL(qmlSig(int,QString)), 
+			MyObject::getInstance(), SLOT(cppSlot(int, QString)));
+
+-------------------------------------------------------------------------------------------
+
+信号从C++端触发调用QML端的函数
+
+//qml端的函数:
+function qmlSlot(int i, string s) {
+	console.log("qml", i, s)
+}
+
+//C++端的信号：
+signals:
+	void cppSig(int i, QString s);
+
+Button {
+	objectName: "mybutton"
+	onClicked: {
+		//通过点击该按钮触发C++端的信号
+		myobj.cppSig(99, "lisi")
+	}
+}
+
+MyObject {
+	id: myobj
+}
+
+Connections {
+	target: myobj
+	function onCppSig(i, s) {
+		qmlSlot(i, s)
+	}
+}
+
+
+
+void MyObject::func()
+{
+	emit cppSig(101, "wangwu");
+}
+
+Connections {
+	target: window
+	funsction on
+}
+
+
+
+
+
+
+loader.sourceComponent = null销毁组件
+
+loader.item
+
+asynchronous:
+
+
+AnimatedImage 可以加载动图
+
+
+
+TARGET = s0	# 表示我们最终生成的可执行文件名为s0.exe
+
+TEMPLATE = APP # 表示项目使用的模板是app，是一般的应用程序
+
+LIBS+= -Lzzz -lxxx -lyyy 	# 这里的zzz:库路径 xxx、yyy:库文件
+
+LIBS += -L$$PWD/lib libhello.a  # 表示添加.pro目录下lib文件夹下的libhello.a库（msvc版本的库.lib mingw版本的库.a）
+
+
+==========================================================================================================================
+qml
+
+Window的一些常用属性：
+	
+	width：
+	height：
+	visible：					//可见性
+	title：qsTr("hello qml")	//标题
+	
+	x:
+	y:			//控件的坐标
+	
+	minimumHeight
+	minimumWidth
+	maximumHeight
+	maximumWidth		//控件能修改的最大最小宽度和高度
+	
+	opacity: 			//控件的透明度，0-1
+
+	qml里的信号与槽
+	signal mySig()	//声明信号
+	onMySig: {}		//
+
+	当已有属性或自定义属性，都会自动生成相应的槽函数，例：onWidthChanged: {}
+	例：自定义属性property int myValue: 0生成的自定义槽函数onMyValue: {}
+	
+	Button {}需要import QtQuick.Controls 2.5
+	
+	focus: true or false
+	
+	onActiveFocusItemChanged onActiveFocusChanged
+	
+Item的一些常用属性
+
+	z:		//可以调整层叠顺序
+	focus:			//焦点
+	activeFocus:
+	
+	rotation:			//旋转
+	scale：				//放缩
+	
+	state:
+	states:
+	
+	transitions:
+	
+	
+Rectangle的一些常用属性
+	color:				//整个控件的颜色"transparent"--透明
+	border.color:		//边框的颜色
+	border.width:		//边框的大小
+	radius:				//圆角的弧度
+	gradient:			//渐变
+---------------------------------------------------------------------------
+P13 Repeater
+
+count: int
+delegate: Component
+model: any
+
+index
+modelData
+
+Repeater {
+//    model: 3			//数字类型，表示有几个模型/控件，循环几次
+	model: ['Button', 'Rectangle', 'MouseArea']		//list<>类型，会自动读取list的大小，数量还是3,
+    Rectangle {
+		y: index * 50
+        width: 100; height: 40
+        border.width: 1
+        //color: "yellow"
+		text: modelData			//modelData可调用list<>类型中的数据
+    }
+}
+
+---------------------------------------------------------------------------
+P14 ListView基础
+
+特别使用到的：
+	highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+	flickableDirection: Flickable.AutoFlickDirection
+	footer
+	header
+	layoutDirection : enumeration		//控制从右往左和从左往右
+	section
+
+ListView {
+    id: list
+    x: 50
+    y: 50
+    width: 400; height: 300
+    spacing: 20										//设置间隔
+
+    model: ListModel {								//model控制了所有的数据，ListModel类型
+
+        ListElement {
+            name: "Bill Smith"
+            number: "555 3264"
+            myValue: 111
+            size: "small"
+        }
+        ListElement {
+            name: "John Brown"
+            number: "555 8426"
+            myValue: 222
+            size: "medium"
+        }
+        ListElement {
+            name: "Sam Wise"
+            number: "555 0473"
+            myValue: 333
+            size: "large"
+        }
+        ListElement {
+            name: "Xi Zhang"
+            number: "555 9837"
+            myValue: 444
+            size: "large"
+        }
+    }
+
+//      delegate: Button {							//delegate控制了每一项数据是如何绘制的
+//          text: name + ": " + number + ": " + myValue
+//      }
+
+    delegate: Rectangle {							//可直接调用ListModel类型ListElement里的属性名
+        color: "transparent"						//设置透明色
+        width: list.width
+        height: 30
+        Text {
+            id: tex
+            text: name + ": " + number + ": " + myValue
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                list.currentIndex = index
+                console.log(list.currentIndex)
+            }
+        }
+    }
+
+    highlight: Rectangle {
+        color: "lightsteelblue"
+        radius: 5
+    }
+
+    flickableDirection: Flickable.AutoFlickDirection		//整个ListView有个回弹效果，默认是AutoFlickDirection，上下回弹，HorizontalFlick左右回弹
+
+    header: Rectangle {
+        width: 400
+        height: 20
+        color: "green"
+    }
+
+    footer: Rectangle {
+        width: 400
+        height: 20
+        color: "blue"
+    }
+
+    section.property: "size"								//根据该属性分类
+    section.criteria: ViewSection.FirstCharacter			//FullString(default)显示完整字符  FirstCharacter显示首字符
+    section.delegate: Rectangle {							//控制每一个section.property是如何绘制的
+        width: 400
+        height: 30
+        color: "grey"										//灰色
+
+        Text {
+            text: section
+            font.bold: true									//是否粗体
+            font.pixelSize: 20								//以像素为单位设置字体大小
+        }
+    }
+}
+
+通过ListModel类型封装一个复杂的类型，再用delegate来绘制
+
+required property string section		声明一个必需的属性
+---------------------------------------------------------------------------------------
+P33 ListView扩展
+
+重点：
+SwipeView
+ObjectModel
+orientation: ListView.Horizontal		//横向滑动
+snapMode: ListView.SnapToItem			//ListView.NoSnap(default)		ListView.SnapToItem		ListView.SnapOneItem
+clip: true                      		//超出父控件的部分不显示
+XmlListModel
+
+
+SwipeView {
+    id: view
+
+    currentIndex: 1
+    anchors.fill: parent			//SwipeView的弊端只能依赖于anchors.fill: parent
+	clip: true                      //超出父控件的部分不显示
+
+
+    Item {
+        id: firstPage
+        Rectangle {
+            anchors.fill: parent
+            color: "lightsteelblue"
+        }
+    }
+    Item {
+        id: secondPage
+        Rectangle {
+            anchors.fill: parent
+            color: "grey"
+        }
+    }
+    Item {
+        id: thirdPage
+        Rectangle {
+            anchors.fill: parent
+            color: "black"
+        }
+    }
+}
+
+PageIndicator {
+    id: indicator
+
+    count: view.count
+    currentIndex: view.currentIndex
+
+    anchors.bottom: view.bottom
+    anchors.horizontalCenter: parent.horizontalCenter
+}
+--------------------------------------------------------------
+自己写的ListView
+ObjectModel {
+    id: testobjectmodel
+    Rectangle { height: 70; width: 80; Rectangle { id: rec1; height: 30; width: 80; color: "red" } Rectangle { id: rec2; y: 40; height: 30; width: 80; color: "blue" } }
+    Rectangle { height: 70; width: 80; Rectangle { id: rec3; height: 30; width: 80; color: "green" } Rectangle { id: rec4; y: 40; height: 30; width: 80; color: "black" } }
+}
+
+ListView {
+    height: 400
+    width: 400
+    model: testobjectmodel
+    spacing: 10
+    orientation: ListView.Horizontal
+}
+
+
+
+
+

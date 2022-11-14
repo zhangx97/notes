@@ -4,7 +4,6 @@ D:\ARM\CyUSBSerial_SDK_Linux\linux\library\lible.c
 
 新光机的应用C:\Users\13166\Desktop\NQM_Controller v2.4.5a_BIN
 
-
 VPN工具：C:\Clash.for.Windows-0.15.1-ia32-win\Clash for Windows.exe
 
 C:\Users\13166\Desktop\rpi v5\生成模型分层动画
@@ -21,10 +20,7 @@ C:\Users\13166\Desktop\rpi v5\生成模型分层动画
 /home/pi/python_project/RealMakerConfig.ini  配置文件
 /home/pi/python_project/info.log  日志
 
-
 Raspberry Pi 4 Model B
-
-
 
 enable_uart=1 #使能串口
 disable_splash=1 #取消彩虹屏
@@ -43,16 +39,25 @@ audio_pwm_mode=2
 新建ssh文件夹
 
 
+设置代理，有可能加在了/home/pi/.bashrc
+export http_proxy="http://192.168.0.124:7890"
+export https_proxy="http://192.168.0.124:7890"
+取消代理
+unset http_proxy
+unset https_proxy
 
-/etc/dhcpcd.conf
+lsb_release -a	查看系统版本
+可在/etc/apt/sources.list中修改源
+清华大学开源软件镜像站 Raspbian镜像使用帮助
+https://mirrors.tuna.tsinghua.edu.cn/help/raspbian/
 
+gksu在debian 10中被弃用，可用pkexec替换？
 
-export http_proxy="http://192.168.0.179:7890"
-export https_proxy="http://192.168.0.179:7890"
+开机启动脚本在/home/pi/.config/autostart目录下
 
+设置wifi账号密码/etc/wpa_supplicant/wpa_supplicant.conf
 
-
-SVN RMK2021090208HOP
+设置静态ip/etc/dhcpcd.conf
 
 
 回归顶点M18
@@ -99,7 +104,6 @@ D:\ARM\CyUSBSerial_SDK_Linux\linux\library\lible.c是自己写的，其它是官
 \\realmaker-share\software\Firmware\技术文档_zhangting\设备固件代码技术文档\树莓派\四代机\各升级版本
 
 
-
 printerControlMessage == "projection"
 当接收到projection的命令时，
 lightengine = new CyUSBSerialLib(ConfigAndState::lightSensorType);
@@ -110,12 +114,10 @@ new一个对象，在构造函数中完成devNum和lightSensorType的赋值；
 CyUSBSerialController::setProjectorOnOff
 
 
-
 70
 旧光机1980x1024
 新光机2712 x 1528原生模式
 DMD
-
 
 
 
@@ -130,34 +132,17 @@ Could not set cursor on screen HDMI1: -13
 Could not set DRM mode for screen HDMI1 (Permission denied)
 Could not queue DRM page flip on screen HDMI1 (Permission denied)
 
-
 \\realmaker-share\software\Firmware\技术文档_zhangting\设备固件代码技术文档\树莓派
 
 C:\Users\13166\Desktop\UnityBuild\MonoBleedingEdge
 
-
-
-
-windows上的排版软件
-
-Arduino
-
-树莓派上的python
-
-
-
 远程桌面连接 mstsc
-
-
 
 查看数据库
 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server Tools 18\Microsoft SQL Server Management Studio 18
 
-
-
 四代机五代机行程不一样；四代机50五代机30
-
-
+四代机
 
 树莓派针脚：
 加热垫：   
@@ -180,64 +165,18 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft SQL Server Tools 
 python用的BCM编码
 qt用的wiringPi编码
 
-
-
 出现recv接收乱码时，\\realmaker-share\software\RealmakerV3.3\RealmakerV3.3.7.rar用该软件
 
 z轴运动：Sprinter.ino:2412
 
-"get pressed"to log:realmaker.py:102
-
-
 arduino 电机升降、灯带、压力传感器
 
-
-
-0001
-0010
-0100
-1000
-0000
-
-
-Z_AXIS 大于等于 4
-
-如何替换
+如何编译成.pyc文件
 sudo python -m py_compile realmaker.py
-
-
-
-case 28: //G28 Home all Axis one at a time
-  //Serial.println(normalpluseCount);
-    pressActive = false;
-  move_home(Z_AXIS, MOV_MIN_DIR);
-  Serial.println("OK");
-
-
-case 15:
-    contactFaceRegulateMode = true; //接触面校准模式开启  
-    Serial.println("OK");  
-    break;  
-
-def PluseCalibrate():
-    global DevSer
-    logger.info("receive cmd adjust pluse")
-    cmdToMachine=com_search_open(DevSer.name)
-    if not DevSer is None:
-        logger.info("serial is exist: "+DevSer.name)
-        logger.info("start calibrate pluse")
-        send_a_cmd(cmdToMachine,"G15")
-        #send_a_cmd(cmdToMachine,"PRESS_INIT 1300000000")
-        send_a_cmd(cmdToMachine,"G28")
-        send_a_cmd(cmdToMachine,"M18")
-    close_serial(cmdToMachine)
-
-
 
 在ModelPack.cs 87行之前修改好setting.config
 在BMInitPara.cs 12行之前修改好setting.config
 InitSetting.cs 462行读取setting.config里的值并显示
-
 
 YaGuan_bottomTime
 DWQ_bottomTime
@@ -253,13 +192,7 @@ pc会受到Welcome!
 pc再发送bottomTimeMultiple 
 树莓派接收到上述命令后发送bottomTimeMultiple! 1x,1x,1x,1x,1x,1x,1x,1x
 
-
-电源转换器 12进5出到树莓派
-
-
-
-排版软件
-光机亮度
+电源转换器 12v进5v出到树莓派
 
 开机 先开主板再开led
 通过控制电流来调整光机亮度，电流和光机亮度呈线性关系
@@ -268,30 +201,300 @@ pc再发送bottomTimeMultiple
 关机 先关led再关主板
 
 遮罩
-
 图像处理中的掩膜Mask
-
-Proj_On
-
-光机是什么时候开机的
-
-LED是怎么打开的
-
-受到开始打印的命令，
-
-0000 0111
-
-
-
-
-Press1 pluseCount : 0
-
 
 NVM2光机		PROJ_ON的GPIO脚位为GPIO_2
 NPR-F NPM-F		PROJ_ON的GPIO脚位为GPIO_7
-修改lible.c487行的值即可
 
-lible.c 198 199 200行 Slave装置位置
+没有影像输入，LED会自动关闭
+
+sudo raspi-config
+
+curl.exe -F \"upload=@D:\光機\NPR-F\bmp files\\1.bmp;filename=DataStream.bmp\" 192.168.0.12:8080/spidatastream
+
+查看树莓派引脚定义pinout
+
+设置好相应模式下的光机亮度，并设置好光机电流
+先检测树脂温度，温度大于预设值
+设置压力传感器触发的脉冲数
+判断已完成的打印层数是否小于模型层数加上底座层数
+判断是打印底座还是模型，设置平台移动距离和电机的转速
+判断光机LED开关状态
+读取相关目录下的图片并投影到光机
+读取光机的亮度、电流值和温度
+
+-I 添加到包含文件的搜索路径
+
+IP地址是 192.168.1.86，广播地址， Bcast:192.168.1.255，掩码地址Mask:255.255.255.0
+
+\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform
+
+密钥 可在同一电脑上（主板不变，密钥与主板绑定）多次激活同一版本（家庭版，专业版）的win10
+
+NPR-F和NPM-F光机的固化阶段会先投影 3帧黑暗帧，目的是保护DMD
+
+打开树莓派的spi：sudo vi config.txt 修改dtparam=spi=on，然后重启
+
+dtoverlay=wl-gpio-pullup,gpioin=4
+
+配置树莓派的FTP服务
+1.安装FTP服务器————vsftpd
+	sudo apt-get install vsftpd
+2.修改vsftpd配置文件
+	anonymous_enable=NO # 不允许匿名访问
+	local_enable=YES # 设定本地用户可以访问
+	write_enable=YES # 设定可以进行写操作
+	local_umask=022 # 设定上传后文件的权限掩码
+3.启动FTP服务器————vsftpd
+	sudo service vsftpd start
+
+linux ftp开机自启动
+查看vsftpd在linux各工作等级下的自启动情况：chkconfig --list|grep vsftpd
+设置vsftpd自启动：chkconfig vsftpd on
+
+树莓派使用温度传感器
+首次使用前配置，打开单总线
+sudo raspi-config
+3 Interface Options    --->    I7 1-Wire    --->    是/yes
+默认映射到GPIO4,可sudo vi /boot/config.txt,修改dtoverlay=w1-gpio,gpiopin=4
+DS18B20温度传感器除了正负极还有一条传输数据的线，连到默认或者指定引脚，
+生成的设备文件路径：/sys/bus/w1/devices
+
+查看树莓派CPU温度
+cat /sys/class/thermal/thermal_zone0/temp
+vcgencmd measure_temp
+
+hdmi_cvt 1920 1080 60 3 0 0 0
+hdmi_timings=1920 1 88 44 156 1080 1 4 5 36 0 0 1 60 0 148500000 3
+
+设置树莓派屏幕一直亮屏,禁止休眠的解决方案
+Raspbian系统使用的是lightdm桌面显示管理器，可以设置xservice桌面交互显示来达到屏幕常亮的目的。
+sudo vi /etc/lightdm/lightdm.conf
+#xserver-command=X    修改为
+xserver-command=X -s 0-dpms    #-s : 设置屏幕保护不启动    -dpms : 关闭电源节能管理
+sudo reboot
+隐藏鼠标xserver-command=X后添加-nocursor
+
+将电脑网络通过网线共享给开发板时，网关为192.168.137.1
+
+JPG		有损压缩，文件小，但画质损失
+PNG		无损压缩，
+BMP		无压缩，文件大，画质好
+
+vs2019:
+Ctrl + K，Ctrl + C = 注释选定行
+Ctrl + K，Ctrl + U = 取消选定行的注释
+
+树莓派上将png图片转换为bmp图片需要用到opencv
+安装Python2的Opencv
+sudo apt-get install libopencv-dev
+sudo apt-get install python-opencv
+查看opencv版本号
+python进入python命令行
+>>> import cv2
+>>> cv2.__version__
+cv2 就是 Opencv
+
+树莓派连接中文wifi
+Windows查看WIFI的BSSID
+WIFI热点的BSSID其实就是WIFI的MAC地址
+SSID为WIFI的热点名称，BSSID冒号后面为WIFI的MAC地址。
+netsh wlan show networks mode=bssid		查看附近所有WIFI的BSSID和SSID等详细信息
+netsh wlan show interfaces				查看已经连接的WIFI的BSSID和SSID
+
+wpa_cli -i wlan0 scan_result
+
+PIL（ Python Imaging Library）是 Python 的第三方图像处理库，由于更新缓慢，目前仅支持Python2.7。
+Pillow---在PIL库的基础上支持Python3的图像处理库。
+Python提供的其它的图像处理库：
+	Scikit-image：一款基于 scipy 科学计算的图像处理软件包，以数组的形式对图像进行处理；
+	OpenCV：其实是一个 C++ 图像处理库，不过它提供了 Python 语言的接口。
+from PIL import Image
+im = Image.open("/home/pi/test.png")
+im.show()
+im_1=Image.new(mode='RGB',(260,100),color="#ff0000") ##ff0000颜色的十六进制格式,默认值0表示黑色
+im_1.show()
+im.width
+im.height
+im.size
+im.format
+im.readonly
+im.info
+im.mode
+	图像模式：1、L、P、RGB、RGBA、CMYK、YCbCr、LAB、HSV、I、F
+	1：1 位像素（取值范围 0-1），0表示黑，1 表示白，单色通道。
+	L：8 位像素（取值范围 0 -255），灰度图，单色通道。
+	P：8 位像素，使用调色板映射到任何其他模式，单色通道。
+	RGB：3 x 8位像素，真彩色，三色通道，每个通道的取值范围 0-255。
+	RGBA：4 x 8位像素，真彩色+透明通道，四色通道。
+im.palette	#返回颜色调色板表格
+
+ping -4 3dp
+
+<td><input type="text" style="width:450px" name="note" value="<%= note %>" /></td>
+
+decodeURI($('#notetest[0]').val())
+
+//conn = new SqlConnection("Server=192.168.0.148;Database=Realmaker;uid=sa;pwd=real198892");
+conn = new SqlConnection("Server=rm-bp1280w63ltml17t6o.sqlserver.rds.aliyuncs.com,3433;Database=rmkdb;uid=realmaker;pwd=shxd0825GO");
+conn.Open();
+
+4b
+wlan0	192.168.0.184	e4-5f-01-8b-20-25
+eth0	192.168.0.186	e4:5f:01:8b:20:24
+
+3dp
+eth0	e4:5f:01:8b:3e:84	192.168.0.7
+wlan0	e4:5f:01:8b:3e:85	192.168.0.6
+
+scan_server = threading.Thread(target=ScanServer)
+scan_server.start()
+Tcp_Server = threading.Thread(target= TcpServerLink)
+Tcp_Server.start()
+
+排版软件中疑似没有调用的脚本：
+	InitMXSetting.cs
+	BtnOK.cs
+
+NewSliceStatus.cs与model.pack的形成有关
+
+setting.config中没用的key
+YMInnerArea
+ZZYMInnerArea
+
+getconf LONG_BIT	查看树莓派系统或者是Linux系统是多少位系统的命令
+uname -a	查看系统版本
+unmae -m	显示电脑类型
+
+Linux raspberrypi 5.10.17-v7l+ #1414 SMP Fri Apr 30 13:20:47 BST 2021 armv7l GNU/Linux
+
+https://www.raspberrypi.com/software/
+RMK2020103001HOP
+
+添加账户
+http://192.168.0.148/account/newaccount.aspx
+
+
+4.02.13版本之后的各个模块的底部固化时间要修改的话都要来修改这个文件
+
+4.02.13版本之前的的牙龈底部固化时间和模型的用的同一参数
+
+3.3.7版本的也有自动连接wifi的功能
+
+通过HDMI连接电脑的设备会出现在设备管理器的监视器下
+
+
+
+select t1.Name
+from Customer t1
+inner join shipment t2 on t2.customer = t1.ID
+where t2.RMKID = 'RMK8022041101HOP' and (t2.deleted is null or t2.deleted != 'Y')
+
+
+select *
+from shipment
+where RMKID = 'RMK8022041101HOP'
+
+057985178553
+
+144x81
+
+192*108
+
+二代机树莓派上有两排引脚，
+左边从下往上数第八脚是LED控制引脚，将该引脚上的线插到左边从上往下数的第一脚。
+右边从下往上数第六脚是电源控制引脚，将该引脚上的线插到右边从上往下数的第二脚。
+并将reboot.py替换掉./rmkcfg中的reboot.py
+
+感应的距离与电容IC的选择和触摸屏的制造工艺有关
+
+xrandr
+sudo xinput
+xinput map-to-output id HDMI-1
+
+free(): double free detected in tcache 2
+
+
+==========================================================================
+树莓派|Ubuntu|Debian关闭开机启动项
+显示开启和未开启的程序
+systemctl list-unit-files
+显示开启的程序
+systemctl list-unit-files | grep enabled
+查看.service的文件路径及内容
+systemctl status xxx.service
+在 Loaded: loaded(/lib/systemd/system/...)里可以看到到该service文件路径
+禁用开机启动
+sudo systemctl disable xxx.service
+===============================================================
+查看启动耗时
+systemd-analyze
+
+查看每个服务的启动耗时
+systemd-analyze blame
+
+显示瀑布状的启动过程流
+systemd-analyze critical-chain
+
+显示指定服务的启动流
+systemd-analyze critical-chain atd.service
+
+
+console=serial0,115200 console=tty1 root=PARTUUID=6f123a42-02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consoles
+
+
+禁用的服务:
+rpi-eeprom-update.service
+
+bluetooth.service	disable之后还有
+
+
+loglevel=3
+
+
+
+# 查看当前已安装的主题
+$ plymouth-set-default-theme --list
+futureprototype	# 默认主题,貌似和details一样
+details	# 纯文本启动日志输出
+joy		# Debian的背景图+四个小白点循环点亮动画
+lines	# Debian的背景图+线条绘制循环动画
+moonlight	# Debian的背景图+向左嗖嗖飞的白线条
+softwaves	# Debian的圆形Logo,边框白色线条高亮转圈
+spacefun	# 星空背景+卡通飞船飞行动画
+text	# 纯色背景,中间三个白色小方框逐渐点亮动画
+tribar	# CentOS/Fedora风格的底部三阶色动态进度条
+
+# 查看当前使用中的主题
+$ plymouth-set-default-theme
+futureprototype
+
+# 切换主题
+$ sudo plymouth-set-default-theme lines -R
+# -R参数将会重新编译initrd文件,下次启动系统的时候就可以看到效果了
+
+vt.global_cursor_default=0隐藏启动画面出现之前黑屏状态下的闪烁光标
+
+
+2021最新.NET5全套系统教学视频，可以免费试听啦！
+猛戳视频地址观看：https://www.bilibili.com/video/BV1zX4y1N7SQ?from=search&seid=3918766351283635575
+
+
+
+
+
+lightdm.service		图形界面
+
+
+
+
+L298N电机驱动不能工作的一个重要原因：
+如何L298N的供电是与单片机分开的，一定要将地线与单片机的地连接起来。
+
+
+
+
+/usr/local/qt5pi/plugins/platforms
 
 
 
@@ -299,3 +502,17 @@ lible.c 198 199 200行 Slave装置位置
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+242    300

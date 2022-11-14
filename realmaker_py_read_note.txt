@@ -1,0 +1,29 @@
+ImageChops.multiply
+	使用前要From PIL import ImageChops
+	将两个图像叠加在一起。如果将图像与纯黑色图像相乘，则结果为黑色。如果乘以纯白图像，则图像不受影响。至少一个图像必须具有模式“1”。
+	im1 = Image.open('timg.jpg')
+	im2 = Image.open('IMG3.jpg')
+	im = ImageChops.multiply(im1, im2) # out = img1 * img2 / MAX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
